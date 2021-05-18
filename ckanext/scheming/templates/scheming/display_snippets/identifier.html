@@ -1,0 +1,15 @@
+{#
+This template renders a text field that permits the manual entry of
+DOI values if one hasn't been automatically created.
+
+If a DOI exists for this dataset, the field renders as disabled
+#}
+
+{# Check for the identifier as a text file in the field dict #}
+{% set doi = data.get(field.get('field_name')) %}
+{% if not doi %}
+    {# Otherwise, get it from the pkg #}
+    {% set doi = data.get('doi', '') %}
+{% endif %}
+{# Render the doi as plain text #}
+{{ doi }}
